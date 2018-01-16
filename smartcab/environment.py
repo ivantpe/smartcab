@@ -50,8 +50,10 @@ class Environment(object):
         self.hang = 0.6
         self.intersections = OrderedDict()
         self.roads = []
-        for x in xrange(self.bounds[0], self.bounds[2] + 1):
-            for y in xrange(self.bounds[1], self.bounds[3] + 1):
+        #for x in xrange(self.bounds[0], self.bounds[2] + 1):
+        for x in range(self.bounds[0], self.bounds[2] + 1):
+            #for y in xrange(self.bounds[1], self.bounds[3] + 1):
+            for y in range(self.bounds[1], self.bounds[3] + 1):
                 self.intersections[(x, y)] = TrafficLight()  # A traffic light at each intersection
 
         for a in self.intersections:
@@ -62,15 +64,18 @@ class Environment(object):
                     self.roads.append((a, b))
 
         # Add environment boundaries
-        for x in xrange(self.bounds[0], self.bounds[2] + 1):
+        #for x in xrange(self.bounds[0], self.bounds[2] + 1):
+        for x in range(self.bounds[0], self.bounds[2] + 1):
             self.roads.append(((x, self.bounds[1] - self.hang), (x, self.bounds[1])))
             self.roads.append(((x, self.bounds[3] + self.hang), (x, self.bounds[3])))
-        for y in xrange(self.bounds[1], self.bounds[3] + 1):
+        #for y in xrange(self.bounds[1], self.bounds[3] + 1):
+        for y in range(self.bounds[1], self.bounds[3] + 1):
             self.roads.append(((self.bounds[0] - self.hang, y), (self.bounds[0], y)))
             self.roads.append(((self.bounds[2] + self.hang, y), (self.bounds[2], y)))    
 
         # Create dummy agents
-        for i in xrange(self.num_dummies):
+        #for i in xrange(self.num_dummies):
+        for i in range(self.num_dummies):
             self.create_agent(DummyAgent)
 
         # Primary agent and associated parameters
